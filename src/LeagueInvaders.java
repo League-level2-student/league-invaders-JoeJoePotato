@@ -21,6 +21,7 @@ l.setup();
 		GamePanel panel=new GamePanel();
 		frame.add(panel);
 		frame.setPreferredSize(d);
+		frame.addKeyListener(panel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setVisible(true);
 	frame.pack();
