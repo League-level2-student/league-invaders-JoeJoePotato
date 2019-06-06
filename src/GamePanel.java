@@ -51,7 +51,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-	r.draw(g);
+		r.draw(g);
 	}
 
 	void drawEndState(Graphics g) {
@@ -90,33 +90,31 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println(e.getKeyCode());
-
-		if (currentstate == GAME) {
-			if (e.getKeyCode() == KeyEvent.VK_UP) {
-				System.out.println("UP");
-			r.up();
-			}
-			if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-				System.out.println("DOWN");
-			r.down();
-			}
-			if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-				System.out.println("LEFT");
-			r.left();
-			}
-			if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-				System.out.println("RIGHT");
-			r.right();
-			}
-		}
 
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println(e.getKeyCode());
+		if (currentstate == GAME) {
+			if (e.getKeyCode() == 38) {
+				System.out.println("UP");
+				r.up();
+			} else if (e.getKeyCode() == 40) {
+				System.out.println("DOWN");
+				r.down();
+			} else if (e.getKeyCode() == 37) {
+				System.out.println("LEFT");
+				r.left();
+			} else if (e.getKeyCode() == 39) {
+				System.out.println("RIGHT");
+				r.right();
+			} else {
+				r.slowdown();
+
+			}
+		}
+
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			if (currentstate == END) {
 				currentstate = MENU;

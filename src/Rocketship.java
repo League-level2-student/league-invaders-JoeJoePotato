@@ -10,18 +10,25 @@ public class Rocketship extends GameObject{
 	}
 
 		// TODO Auto-generated constructor stub
+		int velocity=0;
 		public void right() {
-	        x+=29;
+	        velocity++;
+			x+=3*velocity;
 	    }
 		public void left() {
-	        x-=3;
+			x-=3*velocity;
 	    }
 		public void up() {
-	        y-=3;
+	        y-=3*velocity;
 	    }
 		public void down() {
-	        y+=3;
+	        y+=3*velocity;
 	    }
+		public void slowdown(){
+			if(velocity>=1) {
+			velocity=0;
+			}
+			}
 
 void draw(Graphics g) {
 	g.setColor(Color.BLUE);
