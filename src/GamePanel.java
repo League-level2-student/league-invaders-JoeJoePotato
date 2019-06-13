@@ -5,11 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
+	public static BufferedImage image;
+	public static boolean needImage = true;
+	public static boolean gotImage = false;	
+
 	final int MENU = 0;
 	final int GAME = 1;
 
@@ -21,17 +27,30 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font titleFont = new Font("Arial", Font.PLAIN, 48);
 	Font otherFont = new Font("Arial", Font.PLAIN, 20);
 	Timer frameDraw;
-
+	Timer alienSpawn;
+	ObjectManager o=new ObjectManager(r); 
 	GamePanel() {
 		frameDraw = new Timer(1000 / 60, this);
 		frameDraw.start();
+		if (needImage) {
+		    loadImage ("space.png");
+		}
+	
+	
 	}
 
+	public void startGame() {
+	    alienSpawn = new Timer(1000 , o);
+	    alienSpawn.start();
+	}
+	
 	public void updateMenuState() {
 
 	}
 
 	public void updateGameState() {
+		
+		o.update();
 	}
 
 	public void updateEndState() {
@@ -49,9 +68,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void drawGameState(Graphics g) {
+		
+		
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-		r.draw(g);
+		if (gotImage) {
+			g.drawImage(image, 0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
+			System.out.println("hello!");
+		}
+		o.draw(g);
 	}
 
 	void drawEndState(Graphics g) {
@@ -60,8 +84,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(titleFont);
 		g.setColor(Color.BLACK);
 		g.drawString("GAME OVER", 50, 70);
-	}
+	
+}
 
+	
+	
+	
+	void loadImage(String imageFile) {
+	    if (needImage) {
+	        try {
+	            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+		    gotImage = true;
+	        } catch (Exception e) {
+	            
+	        }
+	        needImage = false;
+	    }
+	}
+	
 	@Override
 	public void paintComponent(Graphics g) {
 		if (currentstate == MENU) {
@@ -113,11 +153,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 				r.slowdown();
 
 			}
+		
+			o.addProjectile(o.getProjectile());
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			if (currentstate == END) {
 				currentstate = MENU;
+				startGame();
 			} else {
 				currentstate++;
 			}
