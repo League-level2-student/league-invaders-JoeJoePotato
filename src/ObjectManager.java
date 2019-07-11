@@ -9,8 +9,11 @@ public class ObjectManager implements ActionListener {
 	ArrayList<Projectile> list = new ArrayList<Projectile>();
 	ArrayList<Alien> ufos = new ArrayList<Alien>();
 
+	
 	ObjectManager(Rocketship spaaace) {
+	
 		this.spaaace = spaaace;
+	
 	}
 
 	void addProjectile(Projectile p) {
@@ -23,19 +26,21 @@ public class ObjectManager implements ActionListener {
 	}
 
 	void update() {
+		
 		for (int i = 0; i < ufos.size(); i++) {
 			Alien joe = ufos.get(i);
 			if (joe.y > LeagueInvaders.HEIGHT) {
 				joe.isActive = false;
 			}
-
-			for (int j = 0; j < list.size(); j++) {
+joe.update();
+		}	for (int j = 0; j < list.size(); j++) {
 				Projectile hey = list.get(j);
 				if (hey.y > LeagueInvaders.HEIGHT) {
 					hey.isActive = false;
 				}
+				hey.update();
 			}
-		}
+		
 	}
 
 	void purge() {
@@ -77,6 +82,6 @@ public class ObjectManager implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		addAlien();
-
+System.out.println("uhhhhhhhhhhhhhhh");
 	}
 }

@@ -20,6 +20,7 @@ public class Alien extends GameObject{
 	void update() {
 		int speed=1;
 		y+=speed;
+	     collisionbox.setBounds(x, y, width, height);
 	}
 	void loadImage(String imageFile) {
 	    if (needImage) {
@@ -34,8 +35,8 @@ public class Alien extends GameObject{
 	}
 	
 	void draw(Graphics g) {
-		g.setColor(Color.YELLOW);
-		g.fillRect(x,y,width,height);
+		
+	
 		if (gotImage) {
 			g.drawImage(image, x, y, width, height, null);
 		} else {

@@ -16,7 +16,9 @@ public class Rocketship extends GameObject{
 		    loadImage ("rocket.png");
 		}
 		}
-
+void update() {
+    collisionbox.setBounds(x, y, width, height);
+}
 		// TODO Auto-generated constructor stub
 		int velocity=0;
 		public void right() {

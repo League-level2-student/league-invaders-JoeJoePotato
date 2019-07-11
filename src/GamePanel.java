@@ -65,6 +65,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(otherFont);
 		g.setColor(Color.YELLOW);
 		g.drawString("Press ENTER to start -or- press SPACE for instructions", 5, 400);
+	
 	}
 
 	void drawGameState(Graphics g) {
@@ -73,7 +74,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.BLACK);
 		if (gotImage) {
 			g.drawImage(image, 0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
-			System.out.println("hello!");
+			
+			
 		}
 		o.draw(g);
 	}
@@ -153,17 +155,25 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 				r.slowdown();
 
 			}
+		if (e.getKeyCode()==32) {
+			
 		
 			o.addProjectile(o.getProjectile());
+		}
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			if (currentstate == END) {
 				currentstate = MENU;
-				startGame();
-			} else {
+				
+			}else {
+				if(currentstate==MENU) {
+					startGame();
+								}
 				currentstate++;
+			
 			}
+			
 		}
 
 	}
