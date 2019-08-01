@@ -20,7 +20,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int GAME = 1;
 
 	final int END = 2;
-	int currentstate = MENU;
+	public int currentstate = MENU;
 	int x;
 	int y;
 	Rocketship r = new Rocketship(250, 700, 50, 50);
@@ -42,6 +42,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void startGame() {
 	    alienSpawn = new Timer(1000 , o);
 	    alienSpawn.start();
+	    r.isActive=true;
 	}
 	
 	public void updateMenuState() {
@@ -51,6 +52,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void updateGameState() {
 		
 		o.update();
+	if(r.isActive==false) {
+		currentstate=END;
+	}
 	}
 
 	public void updateEndState() {
@@ -85,7 +89,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 		g.setFont(titleFont);
 		g.setColor(Color.BLACK);
-		g.drawString("GAME OVER", 50, 70);
+		g.drawString("GAME OVER\nyou killed "+o.getScore()+"aliens", 50, 70);
 	
 }
 
@@ -162,7 +166,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		}
 		}
 
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+		if (e.getKeyCode() == KeyEvent.VK_ENTER ) {
 			if (currentstate == END) {
 				currentstate = MENU;
 				

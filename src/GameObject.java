@@ -6,6 +6,7 @@ int y;
 int width;
 int height;
 Rectangle collisionbox;
+Boolean isActive=true;
 GameObject(int x, int y, int width, int height){
 	this.x=x;
 	this.y=y;

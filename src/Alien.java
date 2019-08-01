@@ -9,7 +9,7 @@ public class Alien extends GameObject{
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
 
-	public boolean isActive;
+	
 	Alien(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub

@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ObjectManager implements ActionListener {
-	Rocketship spaaace;
+	 Rocketship spaaace;
 	ArrayList<Projectile> list = new ArrayList<Projectile>();
 	ArrayList<Alien> ufos = new ArrayList<Alien>();
-
+int points=0;
 	
 	ObjectManager(Rocketship spaaace) {
 	
@@ -16,6 +16,11 @@ public class ObjectManager implements ActionListener {
 	
 	}
 
+	 int getScore() {
+		 int score=points;
+	return score;
+	 }
+	
 	void addProjectile(Projectile p) {
 		list.add(p);
 	}
@@ -25,6 +30,28 @@ public class ObjectManager implements ActionListener {
 		ufos.add(new Alien(r.nextInt(LeagueInvaders.WIDTH), 0, 50, 50));
 	}
 
+	void checkCollision() {
+		for (int z = 0; z < ufos.size(); z++) {
+		Alien zed=ufos.get(z) 	;
+		
+		if(spaaace.collisionbox.intersects(zed.collisionbox)) {
+			spaaace.isActive=false;
+			zed.isActive=false;
+			
+		
+		}
+		for (int k = 0; k < list.size(); k++) {
+			Projectile p=list.get(k);
+		if(p.collisionbox.intersects(zed.collisionbox)) {
+			zed.isActive=false;
+			p.isActive=false; 
+		points++;
+		}
+		}
+		
+		}
+	}
+	
 	void update() {
 		
 		for (int i = 0; i < ufos.size(); i++) {
@@ -40,23 +67,24 @@ joe.update();
 				}
 				hey.update();
 			}
-		
+		checkCollision();
+		purge();
 	}
 
 	void purge() {
 		for (int i = 0; i < ufos.size(); i++) {
 			Alien joe = ufos.get(i);
-			if (joe.isActive = false) {
+			if (joe.isActive == false) {
 				ufos.remove(i);
 			}
-
+		}
 			for (int j = 0; j < list.size(); j++) {
 				Projectile hey = list.get(j);
-				if (hey.isActive = false) {
+				if (hey.isActive == false) {
 					list.remove(j);
 				}
 			}
-		}
+		
 	}
 
 	void draw(Graphics g) {
@@ -82,6 +110,6 @@ joe.update();
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		addAlien();
-System.out.println("uhhhhhhhhhhhhhhh");
+
 	}
 }

@@ -9,8 +9,8 @@ public class Projectile extends GameObject{
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
-	public boolean isActive;
-	Rectangle collisionbox;
+
+	
 	Projectile(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
