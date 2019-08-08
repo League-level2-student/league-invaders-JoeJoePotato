@@ -37,7 +37,8 @@ int points=0;
 		if(spaaace.collisionbox.intersects(zed.collisionbox)) {
 			spaaace.isActive=false;
 			zed.isActive=false;
-			
+			ufos.clear();
+			list.clear();
 		
 		}
 		for (int k = 0; k < list.size(); k++) {
@@ -67,6 +68,8 @@ joe.update();
 				}
 				hey.update();
 			}
+		spaaace.update();
+		
 		checkCollision();
 		purge();
 	}

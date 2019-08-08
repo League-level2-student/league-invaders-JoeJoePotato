@@ -53,8 +53,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		
 		o.update();
 	if(r.isActive==false) {
+		
+		alienSpawn.stop();
 		currentstate=END;
 	}
+	
 	}
 
 	public void updateEndState() {
@@ -144,16 +147,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		if (currentstate == GAME) {
 			if (e.getKeyCode() == 38) {
-				System.out.println("UP");
+			
 				r.up();
 			} else if (e.getKeyCode() == 40) {
-				System.out.println("DOWN");
+		
 				r.down();
 			} else if (e.getKeyCode() == 37) {
-				System.out.println("LEFT");
+	
 				r.left();
 			} else if (e.getKeyCode() == 39) {
-				System.out.println("RIGHT");
+			
 				r.right();
 			} else {
 				r.slowdown();
