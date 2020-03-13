@@ -27,7 +27,7 @@ int points=0;
 
 	void addAlien() {
 		Random r = new Random();
-		ufos.add(new Alien(r.nextInt(LeagueInvaders.WIDTH), 0, 50, 50));
+		ufos.add(new Alien(r.nextInt(Runner.WIDTH), 0, 50, 50));
 	}
 
 	void checkCollision() {
@@ -57,13 +57,13 @@ int points=0;
 		
 		for (int i = 0; i < ufos.size(); i++) {
 			Alien joe = ufos.get(i);
-			if (joe.y > LeagueInvaders.HEIGHT) {
+			if (joe.y > Runner.HEIGHT) {
 				joe.isActive = false;
 			}
 joe.update();
 		}	for (int j = 0; j < list.size(); j++) {
 				Projectile hey = list.get(j);
-				if (hey.y > LeagueInvaders.HEIGHT) {
+				if (hey.y > Runner.HEIGHT) {
 					hey.isActive = false;
 				}
 				hey.update();

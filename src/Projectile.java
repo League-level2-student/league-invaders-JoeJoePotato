@@ -11,7 +11,7 @@ public class Projectile extends GameObject{
 	public static boolean gotImage = false;	
 
 	
-	Projectile(int x, int y, int width, int height) {
+	Projectile(int x, int y, int width, int height, int speed, int damage) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
 		if (needImage) {

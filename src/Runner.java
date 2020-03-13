@@ -2,17 +2,17 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-public class LeagueInvaders {
-	public static final int WIDTH=500;
-	public static final int HEIGHT=800;
+public class Runner {
+	public static final int WIDTH=1000;
+	public static final int HEIGHT=700;
 	static JFrame frame;
 	
 	public static void main(String[] args) {
-	LeagueInvaders l=new LeagueInvaders(new JFrame());
+	Runner l=new Runner(new JFrame());
 l.setup();
 	}
 	
-	LeagueInvaders(JFrame frame) {
+	Runner(JFrame frame) {
 		 this.frame=frame;
 
 }

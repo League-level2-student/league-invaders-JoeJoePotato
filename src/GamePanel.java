@@ -65,7 +65,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void drawMenuState(Graphics g) {
 		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);
 		g.setFont(titleFont);
 		g.setColor(Color.YELLOW);
 		g.drawString("LEAGUE INVADERS", 40, 70);
@@ -80,7 +80,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		
 		g.setColor(Color.BLACK);
 		if (gotImage) {
-			g.drawImage(image, 0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
+			g.drawImage(image, 0, 0, Runner.WIDTH, Runner.HEIGHT, null);
 			
 			
 		}
@@ -89,7 +89,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void drawEndState(Graphics g) {
 		g.setColor(Color.RED);
-		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+		g.fillRect(0, 0, Runner.WIDTH, Runner.HEIGHT);
 		g.setFont(titleFont);
 		g.setColor(Color.BLACK);
 		g.drawString("GAME OVER\nyou killed "+o.getScore()+"aliens", 50, 70);
